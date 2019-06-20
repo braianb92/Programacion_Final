@@ -11,6 +11,36 @@
 #define PRIMERAS_HORAS 120
 #define INTERMEDIO_HORAS 160
 #define MAXIMO_HORAS 240
+#define SUELDO_MAXIMO 30000
+#define MINIMO_HORAS_TRABAJADAS 100
+
+int em_minimoHorasTrabajadas(void* p)
+{
+    Empleado* pEmpleado=p;
+    int horasTrabajadas;
+    int retorno=-1;
+
+    em_getHorasTrabajadas(pEmpleado,&horasTrabajadas);
+    if(horasTrabajadas<MINIMO_HORAS_TRABAJADAS)
+    {
+        retorno=0;
+    }
+    return retorno;
+}
+
+int em_sueldosMayorA(void* p)
+{
+    Empleado* pEmpleado=p;
+    int sueldo;
+    int retorno=-1;
+
+    em_getSueldo(pEmpleado,&sueldo);
+    if(sueldo>=SUELDO_MAXIMO)
+    {
+        retorno=0;
+    }
+    return retorno;
+}
 
 int em_calcularSueldo(void* p)
 {
@@ -216,4 +246,31 @@ int em_sortByNombre(void* empleadoA,void* empleadoB)
     }
 return igual;
 
+}
+
+int em_ListEmployee(LinkedList* listaEmpleados)
+{
+    Empleado* pE;
+    int auxId;
+    int auxHoras;
+    char auxNombre[4096];
+    int size;
+    int i;
+
+    if(listaEmpleados!=NULL)
+    {
+        size=ll_len(listaEmpleados);
+        for(i=0;i<size;i++)
+        {
+            pE=ll_get(listaEmpleados,i);
+            em_getId(pE,&auxId);
+            em_getNombre(pE,auxNombre);
+            em_getHorasTrabajadas(pE,&auxHoras);
+            if(pE!=NULL)
+            {
+                printf("%d,%s,%d\n",auxId,auxNombre,auxHoras);
+            }
+        }
+    }
+   return 1;
 }

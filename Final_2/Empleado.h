@@ -1,5 +1,6 @@
 #ifndef EMPLEADO_H_INCLUDED
 #define EMPLEADO_H_INCLUDED
+#include "LinkedList.h"
 
 struct S_Empleado
 {
@@ -10,6 +11,8 @@ struct S_Empleado
 };
 typedef struct S_Empleado Empleado;
 
+int em_minimoHorasTrabajadas(void* p);
+int em_sueldosMayorA(void* p);
 int em_calcularSueldo(void* p);
 
 Empleado* em_new();
@@ -30,4 +33,6 @@ int em_setSueldoInt(Empleado* this,int value);
 int em_getSueldo(Empleado* this,int* value);
 
 int em_sortByNombre(void* empleadoA,void* empleadoB);
+int em_ListEmployee(LinkedList* listaEmpleados);
+
 #endif // EMPLEADO_H_INCLUDED

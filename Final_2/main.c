@@ -28,17 +28,27 @@ int main()
 {
     // Definir lista de empleados
     LinkedList* listaEmpleados;
+    LinkedList* listaEmpleadosSueldoMayor;
 
     // Crear lista empledos
     listaEmpleados=ll_newLinkedList();
+    listaEmpleadosSueldoMayor=ll_newLinkedList();
 
     // Leer empleados de archivo data.csv
     if(parser_parseEmpleados("data.csv",listaEmpleados)==1)
     {
-        parser_ListEmployee(listaEmpleados);
+        //Muestra la lista de empleados del data.csv
+        em_ListEmployee(listaEmpleados);
+
+        //Elimina de la lista los empleados que trabajaron menos de 100 hs.
+        ll_reduce(listaEmpleados,em_minimoHorasTrabajadas);
+
         // Calcular sueldos
         printf("Calculando sueldos de empleados\n");
         ll_map(listaEmpleados,em_calcularSueldo);
+
+        //Crear lista con empleados con sueldos mayores a 30000
+        listaEmpleadosSueldoMayor=ll_filter(listaEmpleados,em_sueldosMayorA);
 
         // Generar archivo de salida
         if(generarArchivoSueldos("sueldos.csv",listaEmpleados)==1)
@@ -47,10 +57,17 @@ int main()
         }
         else
             printf("Error generando archivo\n");
+
+        // Generar archivo de salida
+        if(generarArchivoSueldos("sueldosMayores.csv",listaEmpleadosSueldoMayor)==1)
+        {
+            printf("Archivo generado correctamente\n");
+        }
+        else
+            printf("Error generando archivo\n");
     }
     else
         printf("Error leyando empleados\n");
-
 
     return 0;
 }

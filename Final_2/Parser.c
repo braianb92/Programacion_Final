@@ -57,30 +57,4 @@ int parser_parseEmpleados(char* fileName, LinkedList* listaEmpleados)
     return retorno;
 }
 
-int parser_ListEmployee(LinkedList* listaEmpleados)
-{
-    Empleado* pE;
-    int auxId;
-    int auxHoras;
-    char auxNombre[4096];
-    int size;
-    int i;
-
-    if(listaEmpleados!=NULL)
-    {
-        size=ll_len(listaEmpleados);
-        for(i=0;i<size;i++)
-        {
-            pE=ll_get(listaEmpleados,i);
-            em_getId(pE,&auxId);
-            em_getNombre(pE,auxNombre);
-            em_getHorasTrabajadas(pE,&auxHoras);
-            if(pE!=NULL)
-            {
-                printf("%d,%s,%d\n",auxId,auxNombre,auxHoras);
-            }
-        }
-    }
-   return 1;
-}
 

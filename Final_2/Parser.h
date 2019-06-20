@@ -4,7 +4,6 @@
 
 int parser_parseEmpleados(char* fileName, LinkedList* listaEmpleados);
 int parser_loadFromText(FILE* pFile, LinkedList* listaEmpleados);
-int parser_ListEmployee(LinkedList* listaEmpleados);
 
 
 #endif // PARSER_H_INCLUDED

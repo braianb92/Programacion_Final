@@ -247,7 +247,6 @@ int ll_remove(LinkedList* this,int index)
     Node* auxBNode;
     Node* auxANode;
 
-
     if(this!=NULL)
     {
         size=ll_len(this);
@@ -639,7 +638,7 @@ int ll_reduce(LinkedList* this,int (*pFunc)(void*))
             pElement=ll_get(this,i);
             if(!pFunc(pElement))
             {
-                if(!ll_remove(pElement,i))
+                if(ll_remove(this,i))
                 {
                     i--;
                     retorno=0;
@@ -654,7 +653,7 @@ LinkedList* ll_filter(LinkedList* this,int (*pFunc)(void*))
 {
     int i;
     void* pElement;
-    LinkedList* filteredList;
+    LinkedList* filteredList=NULL;
 
     if(this!=NULL)
     {
