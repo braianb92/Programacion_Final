@@ -1,0 +1,69 @@
+# depslib dependency file v1.0
+1560989701 source:/home/alumno/Documentos/Baldino_TP_labo1-master/EjercicioPre2doParcialV2/Empleado.c
+	"LinkedList.h"
+
+1560989429 /home/alumno/Documentos/Baldino_TP_labo1-master/EjercicioPre2doParcialV2/LinkedList.h
+
+1560990338 source:/home/alumno/Documentos/Baldino_TP_labo1-master/EjercicioPre2doParcialV2/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1560989808 source:/home/alumno/Documentos/Baldino_TP_labo1-master/EjercicioPre2doParcialV2/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+	"LinkedList.h"
+	"Parser.h"
+
+1529542728 /home/alumno/Documentos/Baldino_TP_labo1-master/EjercicioPre2doParcialV2/Empleado.h
+
+1560989791 /home/alumno/Documentos/Baldino_TP_labo1-master/EjercicioPre2doParcialV2/Parser.h
+	"LinkedList.h"
+
+1560989791 source:/home/alumno/Documentos/Baldino_TP_labo1-master/EjercicioPre2doParcialV2/Parser.c
+	"LinkedList.h"
+
+1561012924 source:c:\users\baldi\documents\utn_workspace\testing_code\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Empleado.h"
+	"utn_strings.h"
+	"LinkedList.h"
+
+1561012906 c:\users\baldi\documents\utn_workspace\testing_code\empleado.h
+
+1559881058 c:\users\baldi\documents\utn_workspace\testing_code\utn_strings.h
+
+1561001587 c:\users\baldi\documents\utn_workspace\testing_code\linkedlist.h
+
+1561001587 source:c:\users\baldi\documents\utn_workspace\testing_code\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561012887 source:c:\users\baldi\documents\utn_workspace\testing_code\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+	"LinkedList.h"
+	"Parser.h"
+
+1561006179 c:\users\baldi\documents\utn_workspace\testing_code\parser.h
+	"LinkedList.h"
+
+1561006192 source:c:\users\baldi\documents\utn_workspace\testing_code\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Empleado.h"
+
+1559881058 source:c:\users\baldi\documents\utn_workspace\testing_code\utn_strings.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn_strings.h"
+
