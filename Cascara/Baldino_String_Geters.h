@@ -1,7 +1,7 @@
-#ifndef UTN_STRINGS_H_INCLUDED
-#define UTN_STRINGS_H_INCLUDED
+#ifndef BALDINO_STRING_GETERS_H_INCLUDED
+#define BALDINO_STRING_GETERS_H_INCLUDED
 
-///ESTE PROGRAMA FUE COMPILADO EN WINDOWS. AUTOR BRAIAN BALDINO.
+///COMPILADO EN WINDOWS. AUTOR BRAIAN BALDINO.
 int getString(char* pointerString, char* msg, char*msgE);
 int getInt (int *pointerNumber, char* msg, char* msgE);
 int getFloat (float *pointerNumber, char* msg, char* msgE);
@@ -17,15 +17,5 @@ int getDate (int* day,int* month, int* year, char* msgE,int tries);
 int getMail (char* pointerString, char* msg, char* msgE,int tries);
 int getGender (char* pointerString, char* msg, char* msgE,int tries);
 
-int isNumber (char* pointerString);
-int isNumberFloat (char* pointerString);
-int isLetter (char* pointerString);
-int isAlphanumeric (char* pointerString);
-int isTelephone (char* pointerString);
-int isDni (char* pointerString);
-int isCuit (char* pointerString);
-int isDate (int day,int month,int year);
-int isMail (char* pointerString);
-int isGender (char* pointerString);
 
-#endif // UTN_STRINGS_H_INCLUDED
+#endif // BALDINO_STRING_GETERS_H_INCLUDED

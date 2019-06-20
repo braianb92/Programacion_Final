@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Baldino_String_Geters.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Baldino_String_Geters.h" />
 		<Unit filename="Empleado.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -46,10 +50,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="utn_strings.c">
+		<Unit filename="validaciones.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="utn_strings.h" />
+		<Unit filename="validaciones.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

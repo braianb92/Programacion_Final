@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Empleado.h"
-#include "validaciones.h"
+#include "utn_strings.h"
 #include "LinkedList.h"
 
 #define PRECIO_HASTA_120H 180
