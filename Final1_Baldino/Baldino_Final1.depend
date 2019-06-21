@@ -1,0 +1,89 @@
+# depslib dependency file v1.0
+1561084299 source:c:\users\baldi\documents\utn_workspace\final\final1_baldino\baldino_string_geters.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Baldino_String_Geters.h"
+	"validaciones.h"
+
+1561044643 c:\users\baldi\documents\utn_workspace\final\final1_baldino\baldino_string_geters.h
+
+1561044643 c:\users\baldi\documents\utn_workspace\final\final1_baldino\validaciones.h
+
+1561062849 source:c:\users\baldi\documents\utn_workspace\final\final1_baldino\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"cliente.h"
+	"Baldino_String_Geters.h"
+	"validaciones.h"
+
+1561059269 c:\users\baldi\documents\utn_workspace\final\final1_baldino\cliente.h
+
+1561049240 source:c:\users\baldi\documents\utn_workspace\final\final1_baldino\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561001587 c:\users\baldi\documents\utn_workspace\final\final1_baldino\linkedlist.h
+
+1561092541 source:c:\users\baldi\documents\utn_workspace\final\final1_baldino\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Baldino_String_Geters.h"
+	"LinkedList.h"
+	"controller.h"
+	"venta.h"
+	"cliente.h"
+	"producto.h"
+
+1561089005 c:\users\baldi\documents\utn_workspace\final\final1_baldino\venta.h
+
+1561044643 source:c:\users\baldi\documents\utn_workspace\final\final1_baldino\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+
+1561089005 source:c:\users\baldi\documents\utn_workspace\final\final1_baldino\venta.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"venta.h"
+	"Baldino_String_Geters.h"
+	"validaciones.h"
+
+1561092309 source:c:\users\baldi\documents\utn_workspace\final\final1_baldino\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"cliente.h"
+	"venta.h"
+	"producto.h"
+	"Controller.h"
+	"parser.h"
+	"Baldino_String_Geters.h"
+
+1561090566 c:\users\baldi\documents\utn_workspace\final\final1_baldino\controller.h
+
+1561089620 c:\users\baldi\documents\utn_workspace\final\final1_baldino\parser.h
+
+1561089620 source:c:\users\baldi\documents\utn_workspace\final\final1_baldino\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"cliente.h"
+	"venta.h"
+	"producto.h"
+
+1561090811 c:\users\baldi\documents\utn_workspace\final\final1_baldino\producto.h
+
+1561090711 source:c:\users\baldi\documents\utn_workspace\final\final1_baldino\producto.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"producto.h"
+	"Baldino_String_Geters.h"
+	"validaciones.h"
+

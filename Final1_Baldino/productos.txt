@@ -1,0 +1,4 @@
+id_producto,nombre,precio_unitario
+1000,TV LG 32,8999.99
+1001,PS4,12999.99
+1002,IPHONE7,19480.99
