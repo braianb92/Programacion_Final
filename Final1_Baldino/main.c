@@ -7,6 +7,9 @@
 #include "cliente.h"
 #include "producto.h"
 
+int generarArchivoInformeVentas(char* fileName,LinkedList* arrayListCliente,
+                                LinkedList* arrayListProducto,LinkedList* arrayListVenta);
+
 int main()
 {
     int option = 0;
@@ -79,7 +82,7 @@ int main()
                 printf("\n-------------\n");
                 if(!controller_addVenta(listaVentas,listaClientes))
                 {
-                    controller_ventaSaveAsText("ventas.txt",listaVentas);
+                    controller_ventaSaveAsText("ventas.txt",listaVentas,listaProductos);
                     printf("\n--Se realizo la venta!--\n");
                 }
                 else
@@ -90,7 +93,7 @@ int main()
             case 6:
                 if(!controller_removeVenta(listaVentas))
                 {
-                    controller_ventaSaveAsText("ventas.txt",listaVentas);
+                    controller_ventaSaveAsText("ventas.txt",listaVentas,listaProductos);
                     printf("\n--Se anulo la venta!--\n");
                 }
                 else
@@ -99,18 +102,91 @@ int main()
                 }
                 break;
             case 7:
-                controller_ListVenta(listaVentas);
+                controller_ListVenta(listaVentas,listaProductos);
                 break;
             case 8:
-
+                controller_ListVentaPorProducto(listaVentas,listaProductos);
                 break;
             case 9:
-
+                generarArchivoInformeVentas("informe.txt",listaClientes,listaProductos,listaVentas);
                 break;
             case 10:
-
                 break;
         }
     }while(option != 11);
     return 0;
+}
+
+int generarArchivoInformeVentas(char* fileName,LinkedList* arrayListCliente,
+                                LinkedList* arrayListProducto,LinkedList* arrayListVenta)
+{
+    Producto* pProducto;
+    Venta* pVenta;
+    Cliente* pCliente;
+    int clienteIdCliente;
+    int ventaIdCliente;
+    char clienteNombre[4000];
+    char clienteApellido[4000];
+    char clienteDni[4000];
+    int ventaCodProd;
+    int ventaCantidad;
+    int ventaIdVenta;
+    int productoIdProd;
+    char productoNombre[4000];
+    float productoPrecioUnitario;
+    float montoFacturado;
+    int i;
+    int j;
+    int k;
+    int retorno=-1;
+
+    FILE* fp=fopen(fileName,"w+");
+    if(arrayListCliente!=NULL&&arrayListProducto!=NULL
+       &&arrayListVenta!=NULL&&fp!=NULL)
+    {
+        fprintf(fp,"idVenta,nombreCliente,Apellido,dni,cod_prod,monto_facturado\n");
+        for(i=0;i<ll_len(arrayListCliente);i++)
+        {
+            pCliente=ll_get(arrayListCliente,i);
+            if(pCliente!=NULL)
+            {
+                cliente_getId(pCliente,&clienteIdCliente);
+                for(j=0;j<ll_len(arrayListVenta);j++)
+                {
+                    pVenta=ll_get(arrayListVenta,j);
+                    venta_getIdCliente(pVenta,&ventaIdCliente);
+                    if(pVenta!=NULL&&clienteIdCliente==ventaIdCliente)
+                    {
+                        cliente_getNombre(pCliente,clienteNombre);
+                        cliente_getApellido(pCliente,clienteApellido);
+                        cliente_getDni(pCliente,clienteDni);
+                        venta_getCodigoProducto(pVenta,&ventaCodProd);
+                        venta_getCantidad(pVenta,&ventaCantidad);
+                        venta_getIdVenta(pVenta,&ventaIdVenta);
+                        for(k=0;k<ll_len(arrayListProducto);k++)
+                        {
+                            pProducto=ll_get(arrayListProducto,k);
+                            producto_getId(pProducto,&productoIdProd);
+                            if(pProducto!=NULL&&productoIdProd==ventaCodProd)
+                            {
+                                producto_getNombre(pProducto,productoNombre);
+                                producto_getPrecioUnitario(pProducto,&productoPrecioUnitario);
+                                montoFacturado=ventaCantidad*productoPrecioUnitario;
+                                fprintf(fp,"%d,%s,%s,%s,%d,%.2f",ventaIdVenta,
+                                                                clienteNombre,
+                                                                clienteApellido,
+                                                                clienteDni,
+                                                                ventaCodProd,
+                                                                montoFacturado);
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        fclose(fp);
+        retorno=0;
+    }
+    return retorno;
 }

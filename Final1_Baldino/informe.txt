@@ -1,0 +1,1 @@
+idVenta,nombreCliente,Apellido,dni,cod_prod,monto_facturado

@@ -28,7 +28,7 @@
 
 1561001587 c:\users\baldi\documents\utn_workspace\final\final1_baldino\linkedlist.h
 
-1561092541 source:c:\users\baldi\documents\utn_workspace\final\final1_baldino\main.c
+1561161685 source:c:\users\baldi\documents\utn_workspace\final\final1_baldino\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Baldino_String_Geters.h"
@@ -54,7 +54,7 @@
 	"Baldino_String_Geters.h"
 	"validaciones.h"
 
-1561092309 source:c:\users\baldi\documents\utn_workspace\final\final1_baldino\controller.c
+1561156830 source:c:\users\baldi\documents\utn_workspace\final\final1_baldino\controller.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -65,7 +65,7 @@
 	"parser.h"
 	"Baldino_String_Geters.h"
 
-1561090566 c:\users\baldi\documents\utn_workspace\final\final1_baldino\controller.h
+1561147547 c:\users\baldi\documents\utn_workspace\final\final1_baldino\controller.h
 
 1561089620 c:\users\baldi\documents\utn_workspace\final\final1_baldino\parser.h
 

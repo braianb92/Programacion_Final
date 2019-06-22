@@ -6,7 +6,7 @@ int controller_ventaLoadFromText(char* path , LinkedList* arrayList);
 int controller_productoLoadFromText(char* path , LinkedList* arrayList);
 
 int controller_clienteSaveAsText(char* path , LinkedList* arrayList);
-int controller_ventaSaveAsText(char* path , LinkedList* arrayList);
+int controller_ventaSaveAsText(char* path , LinkedList* arrayListVenta,LinkedList* arrayListProducto);
 
 int controller_addCliente(LinkedList* arrayList);
 int controller_editCliente(LinkedList* arrayList);
@@ -15,7 +15,8 @@ int controller_ListCliente(LinkedList* arrayList);
 
 int controller_addVenta(LinkedList* arrayListVenta,LinkedList* arrayListCliente);
 int controller_removeVenta(LinkedList* arrayList);
-int controller_ListVenta(LinkedList* arrayList);
+int controller_ListVenta(LinkedList* arrayListVenta,LinkedList*arrayListProducto);
+int controller_ListVentaPorProducto(LinkedList* arrayListVenta,LinkedList* arrayListProducto);
 
 int controller_ListProducto(LinkedList* arrayList);
 

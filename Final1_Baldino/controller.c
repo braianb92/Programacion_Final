@@ -102,34 +102,42 @@ int controller_clienteSaveAsText(char* path , LinkedList* arrayList)
     return retorno;
 }
 
-int controller_ventaSaveAsText(char* path , LinkedList* arrayList)
+int controller_ventaSaveAsText(char* path , LinkedList* arrayListVenta,LinkedList* arrayListProducto)
 {
     Venta* pVenta;
+    Producto* pProducto;
     int auxIdVenta;
     int auxIdCliente;
     int auxCodigoProducto;
     int auxCantidad;
-    int size;
+    float auxPrecioUnitario;
     int i;
+    int j;
 
     FILE* fp=fopen(path,"w");
-    if(fp!=NULL && arrayList!=NULL)
+    if(fp!=NULL && arrayListVenta!=NULL&&arrayListProducto!=NULL)
     {
-        fprintf(fp,"id_venta,id_cliente,cod_prod,cantidad\n");
-        size=ll_len(arrayList);
-        for(i=0;i<size;i++)
+        fprintf(fp,"id_venta,id_cliente,cod_prod,cantidad,precio_unitario\n");
+        for(i=0;i<ll_len(arrayListVenta);i++)
         {
-            pVenta=ll_get(arrayList,i);
+            pVenta=ll_get(arrayListVenta,i);
             venta_getIdVenta(pVenta,&auxIdVenta);
             venta_getIdCliente(pVenta,&auxIdCliente);
             venta_getCodigoProducto(pVenta,&auxCodigoProducto);
             venta_getCantidad(pVenta,&auxCantidad);
-            if(pVenta!=NULL)
+            for(j=0;j<ll_len(arrayListProducto);j++)
             {
-                fprintf(fp,"%d,%d,%d,%d\n", auxIdVenta,
-                                            auxIdCliente,
-                                            auxCodigoProducto,
-                                            auxCantidad);
+                pProducto=ll_get(arrayListProducto,j);
+                if(pVenta!=NULL&&pProducto!=NULL
+                   &&auxCodigoProducto==pProducto->id)
+                {
+                    producto_getPrecioUnitario(pProducto,&auxPrecioUnitario);
+                    fprintf(fp,"%d,%d,%d,%d,%.2f\n", auxIdVenta,
+                                                auxIdCliente,
+                                                auxCodigoProducto,
+                                                auxCantidad,
+                                                auxPrecioUnitario);
+                }
             }
         }
         fclose(fp);
@@ -318,7 +326,7 @@ int controller_ListCliente(LinkedList* arrayList)
             cliente_getDni(pCliente,bufferDni);
             if(pCliente!=NULL)
             {
-                printf("%d,%s,%s,%s\n", auxId,
+                printf("\t%d,%s,%s,%s\n", auxId,
                                         bufferNombre,
                                         bufferApellido,
                                         bufferDni);
@@ -402,37 +410,98 @@ int controller_removeVenta(LinkedList* arrayList)
     return retorno;
 }
 
-int controller_ListVenta(LinkedList* arrayList)
+int controller_ListVenta(LinkedList* arrayListVenta,LinkedList*arrayListProducto)
 {
     Venta* pVenta;
+    Producto* pProducto;
     int auxIdVenta;
     int auxIdCliente;
     int auxCodigoProducto;
+    int auxIdProd;
     int auxCantidad;
-    int size;
+    float auxPrecioUnitario;
     int i;
+    int j;
 
-    if(arrayList!=NULL)
+    if(arrayListVenta!=NULL&&arrayListProducto!=NULL)
     {
-        size=ll_len(arrayList);
-        for(i=0;i<size;i++)
+        for(i=0;i<ll_len(arrayListVenta);i++)
         {
-            pVenta=ll_get(arrayList,i);
+            pVenta=ll_get(arrayListVenta,i);
             venta_getIdVenta(pVenta,&auxIdVenta);
             venta_getIdCliente(pVenta,&auxIdCliente);
             venta_getCodigoProducto(pVenta,&auxCodigoProducto);
             venta_getCantidad(pVenta,&auxCantidad);
-            if(pVenta!=NULL)
+            for(j=0;j<ll_len(arrayListProducto);j++)
             {
-                printf("%d,%d,%d,%d\n",  auxIdVenta,
-                                            auxIdCliente,
-                                            auxCodigoProducto,
-                                            auxCantidad);
+                pProducto=ll_get(arrayListProducto,j);
+                producto_getId(pProducto,&auxIdProd);
+                if(pVenta!=NULL&&pProducto!=NULL
+                   &&auxCodigoProducto==auxIdProd)
+                {
+                    producto_getPrecioUnitario(pProducto,&auxPrecioUnitario);
+                    printf("\t%d,%d,%d,%d,%.2f\n",  auxIdVenta,
+                                                    auxIdCliente,
+                                                    auxCodigoProducto,
+                                                    auxCantidad,
+                                                    auxPrecioUnitario);
+                }
+            }
+
+        }
+    }
+   return 1;
+}
+
+int controller_ListVentaPorProducto(LinkedList* arrayListVenta,LinkedList* arrayListProducto)
+{
+    Venta* pVenta;
+    Producto* pProducto;
+    char bufferCodigoPrdoucto[4096];
+    int bufferCodigoInt;
+    int auxIdVenta;
+    int auxIdCliente;
+    int auxCodigoProducto;
+    int auxCantidad;
+    int i;
+    int j;
+
+    if(arrayListVenta!=NULL&&arrayListProducto!=NULL)
+    {
+        if(!getStringNumeros(bufferCodigoPrdoucto,"Ingrese Codigo de Producto (venta x producto): ",
+                             "\nDATO NO VALIDO\n",3))
+        {
+            bufferCodigoInt=atoi(bufferCodigoPrdoucto);
+            for(j=0;j<ll_len(arrayListProducto);j++)
+            {
+                pProducto=ll_get(arrayListProducto,j);
+                if(pProducto->id==bufferCodigoInt)
+                {
+                    for(i=0;i<ll_len(arrayListVenta);i++)
+                    {
+                        pVenta=ll_get(arrayListVenta,i);
+                        if(bufferCodigoInt==pVenta->codigoProducto)
+                        {
+                            venta_getIdVenta(pVenta,&auxIdVenta);
+                            venta_getIdCliente(pVenta,&auxIdCliente);
+                            venta_getCodigoProducto(pVenta,&auxCodigoProducto);
+                            venta_getCantidad(pVenta,&auxCantidad);
+                            if(pVenta!=NULL)
+                            {
+                                printf("\t%d,%d,%d,%d\n",   auxIdVenta,
+                                                            auxIdCliente,
+                                                            auxCodigoProducto,
+                                                            auxCantidad);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
    return 1;
 }
+
 
 //CONTROLLER PRODUCTO
 int controller_ListProducto(LinkedList* arrayList)
@@ -455,7 +524,7 @@ int controller_ListProducto(LinkedList* arrayList)
             producto_getPrecioUnitario(pProducto,&auxPrecioUnitario);
             if(pProducto!=NULL)
             {
-                printf("%d,%s,%.2f\n", auxIdProducto,
+                printf("\t%d,%s,%.2f\n", auxIdProducto,
                                         bufferNombre,
                                         auxPrecioUnitario);
             }
@@ -463,3 +532,5 @@ int controller_ListProducto(LinkedList* arrayList)
     }
    return 1;
 }
+
+
