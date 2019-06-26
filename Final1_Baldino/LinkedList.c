@@ -605,6 +605,14 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     return returnAux;
 }
 
+/** \brief Map the elements of the list
+*          according to the criteria function
+*          recieved as parameter.
+* \param   pList LinkedList* Puntero a la lista
+* \param   pFunc (*pFunc) Puntero a la funcion criterio
+* \return  int Retorna  (-1) Error: si el puntero a la listas es NULL
+                        ( 0) Si ok
+ */
 int ll_map(LinkedList* this,int (*pFunc)(void*))
 {
     int i;
@@ -625,6 +633,14 @@ int ll_map(LinkedList* this,int (*pFunc)(void*))
     return retorno;
 }
 
+/** \brief Elimina elementos de la lista segun
+*           se cumpla la funcion criterio
+*           recivida como parametro.
+* \param   pList LinkedList* Puntero a la lista
+* \param   pFunc (*pFunc) Puntero a la funcion criterio
+* \return  int Retorna  (-1) Error: si el puntero a la listas es NULL
+                        ( 0) Si ok
+ */
 int ll_reduce(LinkedList* this,int (*pFunc)(void*))
 {
     int i;
@@ -649,6 +665,15 @@ int ll_reduce(LinkedList* this,int (*pFunc)(void*))
     return retorno;
 }
 
+/** \brief Crea una nueva lista que contiene
+*           solo los elementos que cumplen
+*           con el criterio de la funcion
+*           recivida como parametro
+* \param   pList LinkedList* Puntero a la lista
+* \param   pFunc (*pFunc) Puntero a la funcion criterio
+* \return  int Retorna  (NULL) Error: si el puntero a la listas es NULL
+                        (LinkedList) Si ok
+ */
 LinkedList* ll_filter(LinkedList* this,int (*pFunc)(void*))
 {
     int i;
